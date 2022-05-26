@@ -1,53 +1,64 @@
 import { BlockWithTransactions } from '@ethersproject/abstract-provider';
-import { BigNumber } from 'ethers';
 import React from 'react';
+import Moment from 'react-moment';
+import { Link } from 'react-router-dom';
+import { bigNumberToString } from '../helpers';
+import './FullBlock.css';
 
 const OneFullBlock = ({ block }: { block: BlockWithTransactions }) => {
-  const bigNumberToString = (bigNb: Record<any, any>) => {
-    return BigNumber.from(bigNb).toString();
-  };
+  const date = new Date(block.timestamp * 1000);
+
   return (
     <div>
       <h3>General Info</h3>
-      <div>
-        <span>Block number :</span> <span>{block.number}</span>
-      </div>
-      <div>
-        <span>Timestamp :</span> <span>{block.timestamp}</span>
-      </div>
-      <div>
-        <span>Transactions :</span> <span>{block.transactions.length}</span>
+      <div className='flex'>
+        <div className='block-labels'>
+          <div>Block number :</div>
+          <div>Timestamp :</div>
+          <div>Transactions :</div>
+        </div>
+        <div className='block-info'>
+          <div>{block.number}</div>
+          <Moment parse='YYYY-MM-DD HH:mm'>{date}</Moment>
+          <div>
+            {block.transactions.length} transactions{' '}
+            <Link to={`/txsPerBlock/${block.number}`}>See details</Link>
+          </div>
+        </div>
       </div>
 
       <h3>Gas</h3>
-      <div>
-        <span>Gas Limit :</span> <span>{bigNumberToString(block.gasLimit)}</span>
-      </div>
-      <div>
-        <span>Gas Used :</span> <span>{bigNumberToString(block.gasUsed)}</span>
-      </div>
-      {!!block.baseFeePerGas && (
-        <div>
-          <span>Base Fee per Gas :</span>{' '}
-          <span>{bigNumberToString(block.baseFeePerGas)}</span>
+      <div className='flex'>
+        <div className='block-labels'>
+          <div>Gas Limit :</div>
+          <div>Gas Used :</div>
+          {!!block.baseFeePerGas && <div>Base Fee per Gas :</div>}
         </div>
-      )}
+        <div className='block-info'>
+          <div>{bigNumberToString(block.gasLimit)}</div>
+          <div>{bigNumberToString(block.gasUsed)}</div>
+          {!!block.baseFeePerGas && <div>{bigNumberToString(block.baseFeePerGas)}</div>}
+        </div>
+      </div>
 
       <h3>Mining</h3>
-      <div>
-        <span>Miner :</span> <span>{block.miner}</span>
-      </div>
-      <div>
-        <span>Difficulty :</span> <span>{bigNumberToString(block._difficulty)}</span>
-      </div>
-      <div>
-        <span>Nonce :</span> <span>{block.nonce}</span>
-      </div>
-      <div>
-        <span>Hash :</span> <span>{block.hash}</span>
-      </div>
-      <div>
-        <span>Parent Hash :</span> <span>{block.parentHash}</span>
+      <div className='flex'>
+        <div className='block-labels'>
+          <div>Miner :</div>
+          <div>Difficulty :</div>
+          <div>Nonce :</div>
+          <div>Hash :</div>
+          <div>Parent Hash :</div>
+        </div>
+        <div className='block-info'>
+          <div>
+            <Link to={`/address/${block.miner}`}>{block.miner}</Link>
+          </div>
+          <div>{bigNumberToString(block._difficulty)}</div>
+          <div>{block.nonce}</div>
+          <div>{block.hash}</div>
+          <div>{block.parentHash}</div>
+        </div>
       </div>
     </div>
   );

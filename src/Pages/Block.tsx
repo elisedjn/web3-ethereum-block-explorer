@@ -2,6 +2,7 @@ import { BlockWithTransactions } from '@ethersproject/abstract-provider';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { getBlockWithTx } from '../API';
+import Loading from '../Components/Loading';
 import OneFullBlock from '../Components/OneFullBlock';
 
 const BlockPage = () => {
@@ -32,7 +33,7 @@ const BlockPage = () => {
       {!block && (
         <>
           {loading ? (
-            <div>Loading... Please wait</div>
+            <Loading />
           ) : (
             <div>Something went wrong, please try again later</div>
           )}

@@ -37,9 +37,15 @@ h1 {
   width: 400px;
 }
 
+.block-timestamp{
+  font-style: italic;
+  color: darkgrey;
+}
+
 .blocks-list{
   margin-top: 20px;
   display: flex;
   align-items: center;
   gap: 20px;
+
 }

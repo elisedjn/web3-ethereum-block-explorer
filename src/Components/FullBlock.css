@@ -1,0 +1,21 @@
+.block-labels, .block-info{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-left: 10px;
+}
+
+.block-labels {
+  width: 200px;
+}
+
+.block-labels > div {
+  font-weight: 500;
+}
+
+h3 {
+  margin: 10px 0px;
+  margin-top: 24px;
+  background-color: orange;
+  padding: 5px;
+}

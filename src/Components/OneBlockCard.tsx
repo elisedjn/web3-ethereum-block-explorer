@@ -12,7 +12,9 @@ const OneBlockCard = ({ block }: { block: Block }) => {
         Block <Link to={`/block/${block.number}`}>{block.number}</Link>
       </h4>
       <div>
-        <Moment fromNow>{date}</Moment>
+        <Moment className='block-timestamp' fromNow>
+          {date}
+        </Moment>
         <p>{block.transactions.length} transactions</p>
         <p>
           Miner : <Link to={`/address/${block.miner}`}>{block.miner}</Link>
