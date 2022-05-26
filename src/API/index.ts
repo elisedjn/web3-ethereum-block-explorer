@@ -5,7 +5,17 @@ const url = MAINNET_URL;
 const provider = new providers.JsonRpcProvider(url);
 const etherscanProvider = new providers.EtherscanProvider();
 
-export const getBlock = async (blockNb: string) => {
+export const getBlock = async (blockNb: string | number) => {
+  try {
+    const block = await provider.getBlock(blockNb);
+    return block;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+export const getBlockWithTx = async (blockNb: string | number) => {
   try {
     const block = await provider.getBlockWithTransactions(blockNb);
     return block;

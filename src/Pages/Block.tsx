@@ -1,8 +1,8 @@
 import { BlockWithTransactions } from '@ethersproject/abstract-provider';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { getBlock } from '../API';
-import OneBlock from '../Components/OneBlock';
+import { getBlockWithTx } from '../API';
+import OneFullBlock from '../Components/OneFullBlock';
 
 const BlockPage = () => {
   const { blockNb } = useParams();
@@ -13,7 +13,7 @@ const BlockPage = () => {
     try {
       if (!blockNb) return;
       setLoading(true);
-      const block = await getBlock(blockNb);
+      const block = await getBlockWithTx(+blockNb);
       setBlock(block);
       setLoading(false);
     } catch (error) {
@@ -38,7 +38,7 @@ const BlockPage = () => {
           )}
         </>
       )}
-      {!!block && <OneBlock block={block} />}
+      {!!block && <OneFullBlock block={block} />}
     </div>
   );
 };

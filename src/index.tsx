@@ -3,13 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Link } from 'react-router-dom';
+import NavBar from './Components/NavBar';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    <App />
+    <div>
+      <NavBar />
+      <div id='app-body'>
+        <App />
+      </div>
+    </div>
   </React.StrictMode>
 );
 

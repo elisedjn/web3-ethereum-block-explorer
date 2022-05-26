@@ -10,20 +10,10 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Home />}>
-          <Route path='block' element={<div>Blocks</div>}>
-            <Route index element={<div>Choose a block</div>} />
-            <Route path=':blockNb' element={<BlockPage />} />
-          </Route>
-          <Route path='tx' element={<div>Transactions</div>}>
-            <Route index element={<div>Choose a transaction</div>} />
-            <Route path=':txNb' element={<Transaction />} />
-          </Route>
-          <Route path='address' element={<div>Addresses</div>}>
-            <Route index element={<div>Choose an address</div>} />
-            <Route path=':addressNb' element={<Address />} />
-          </Route>
-        </Route>
+        <Route path='/' element={<Home />} />
+        <Route path='/block/:blockNb' element={<BlockPage />} />
+        <Route path='/tx/:txNb' element={<Transaction />} />
+        <Route path='/address/:addressNb' element={<Address />} />
       </Routes>
     </BrowserRouter>
   );

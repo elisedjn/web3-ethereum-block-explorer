@@ -21,7 +21,9 @@ const Address = () => {
     try {
       setLoading(true);
       const addressInfo = await getAddressInfo(addressNb ?? '');
+      console.log('oops');
       if (addressInfo.success && addressInfo.data) {
+        console.log('hello');
         setAddress(addressInfo.data);
       }
       setLoading(false);
@@ -33,12 +35,17 @@ const Address = () => {
 
   useEffect(() => {
     getTheAddress();
-  }, [addressNb]);
+  }, []);
 
+  const balance = address?.balance ? BigNumber.from(address.balance).toString() : 0;
+
+  console.log({ address });
   return (
     <div>
       <h1>Address {addressNb}</h1>
-      <div></div>
+      <div>
+        <p>Balance : {balance}</p>
+      </div>
     </div>
   );
 };

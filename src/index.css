@@ -11,3 +11,44 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+h4 {
+  padding: 0px;
+  margin: 0px;
+  padding-bottom: 20px;
+}
+
+#app-body {
+  padding: 20px;
+  margin: auto;
+  margin-top: 80px;
+}
+
+.flex{
+  display: flex;
+  align-items: center;
+}
+
+button {
+  border: none;
+  padding: 10px;
+  background-color: orange;
+  border-radius: 5px;
+  box-shadow: 0 3px 3px -3px;
+  cursor: pointer;
+}
+
+button:hover{
+  background-color: darkorange;
+}
+
+a{
+  text-decoration: none;
+  color: orange;
+  cursor: pointer;
+}
+
+a:hover{
+  color: darkorange;
+  text-decoration: underline;
+}

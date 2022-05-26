@@ -2,7 +2,7 @@ import { BlockWithTransactions } from '@ethersproject/abstract-provider';
 import { BigNumber } from 'ethers';
 import React from 'react';
 
-const OneBlock = ({ block }: { block: BlockWithTransactions }) => {
+const OneFullBlock = ({ block }: { block: BlockWithTransactions }) => {
   const bigNumberToString = (bigNb: Record<any, any>) => {
     return BigNumber.from(bigNb).toString();
   };
@@ -53,4 +53,4 @@ const OneBlock = ({ block }: { block: BlockWithTransactions }) => {
   );
 };
 
-export default OneBlock;
+export default OneFullBlock;
