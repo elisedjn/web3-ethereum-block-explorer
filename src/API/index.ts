@@ -51,3 +51,13 @@ export const getAddressInfo = async (addressNb: string) => {
     return { success: false, error: error.message };
   }
 };
+
+export const getTransactionReceipt = async (tXHash: string) => {
+  try {
+    const tx = await provider.getTransactionReceipt(tXHash);
+    return tx;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};

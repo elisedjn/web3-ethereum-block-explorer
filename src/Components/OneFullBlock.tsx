@@ -1,11 +1,11 @@
-import { BlockWithTransactions } from '@ethersproject/abstract-provider';
+import { Block } from '@ethersproject/abstract-provider';
 import React from 'react';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import { bigNumberToString } from '../helpers';
 import './FullBlock.css';
 
-const OneFullBlock = ({ block }: { block: BlockWithTransactions }) => {
+const OneFullBlock = ({ block }: { block: Block }) => {
   const date = new Date(block.timestamp * 1000);
 
   return (

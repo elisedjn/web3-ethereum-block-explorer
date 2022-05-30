@@ -1,20 +1,20 @@
-import { BlockWithTransactions } from '@ethersproject/abstract-provider';
+import { Block } from '@ethersproject/abstract-provider';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { getBlockWithTx } from '../API';
+import { getBlock } from '../API';
 import Loading from '../Components/Loading';
 import OneFullBlock from '../Components/OneFullBlock';
 
 const BlockPage = () => {
   const { blockNb } = useParams();
-  const [block, setBlock] = useState<BlockWithTransactions | null>(null);
+  const [block, setBlock] = useState<Block | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
   const getTheBlock = async () => {
     try {
       if (!blockNb) return;
       setLoading(true);
-      const block = await getBlockWithTx(+blockNb);
+      const block = await getBlock(+blockNb);
       setBlock(block);
       setLoading(false);
     } catch (error) {
