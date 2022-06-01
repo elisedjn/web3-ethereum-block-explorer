@@ -47,5 +47,56 @@ h1 {
   display: flex;
   align-items: center;
   gap: 20px;
+}
 
+.search-block{
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  padding: 20px;
+  background-color: #eaeaea;
+  gap: 20px;
+  border-radius: 12px;
+}
+
+.search-block > label {
+  display: flex;
+  flex-direction: column;
+  color:grey;
+  font-weight: 500;
+}
+
+.search-block > label > input {
+  border: 1px solid lightgrey;
+  padding: 8px;
+  margin-top: 12px;
+  border-radius: 5px;
+}
+
+.tx-table{
+  border-collapse: collapse;
+  border: 2px solid lightgray;
+}
+
+.tx-table .header-line {
+  background-color: darkorange;
+}
+
+.tx-table .header-line td {
+  padding: 12px 8px;
+  
+}
+
+.tx-table td {
+  border-top: 2px solid lightgray;
+  border-bottom: 2px solid lightgray;
+  padding: 8px;
+}
+
+.truncate-ellipsis {
+  width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
 }

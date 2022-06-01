@@ -12,9 +12,12 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/block' element={<BlockPage />} />
         <Route path='/block/:blockNb' element={<BlockPage />} />
+        <Route path='/tx' element={<Transaction />} />
         <Route path='/tx/:txNb' element={<Transaction />} />
         <Route path='/txsPerBlock/:blockNb' element={<AllTransactions />} />
+        <Route path='/address' element={<Address />} />
         <Route path='/address/:addressNb' element={<Address />} />
       </Routes>
     </BrowserRouter>

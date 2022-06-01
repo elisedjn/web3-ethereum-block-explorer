@@ -1,6 +1,7 @@
 import { Block } from '@ethersproject/abstract-provider';
-import React, { useEffect, useState } from 'react';
+import React, { InputHTMLAttributes, useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import { getBlock } from '../API';
 import Loading from '../Components/Loading';
 import OneFullBlock from '../Components/OneFullBlock';
@@ -24,20 +25,42 @@ const BlockPage = () => {
   };
 
   useEffect(() => {
-    getTheBlock();
+    if (!blockNb) {
+      setBlock(null);
+    } else {
+      getTheBlock();
+    }
   }, [blockNb]);
+
+  const getLink = () => {
+    const input = document.getElementById('blockNbToFind') as HTMLInputElement;
+    const value = input?.value;
+    return value ? `/block/${value}` : '/block';
+  };
 
   return (
     <div>
-      <h1>Block {blockNb}</h1>
-      {!block && (
-        <>
-          {loading ? (
-            <Loading />
-          ) : (
-            <div>Something went wrong, please try again later</div>
-          )}
-        </>
+      <h1>{blockNb ? `Block ${blockNb}` : 'Look for a Block'}</h1>
+      {!blockNb ? (
+        <div className='search-block'>
+          <label>
+            Block number
+            <input type='text' id='blockNbToFind' />
+          </label>
+          <Link className='button-like' to={getLink()}>
+            Search
+          </Link>
+        </div>
+      ) : (
+        !block && (
+          <>
+            {loading ? (
+              <Loading />
+            ) : (
+              <div>Something went wrong, please try again later</div>
+            )}
+          </>
+        )
       )}
       {!!block && <OneFullBlock block={block} />}
     </div>

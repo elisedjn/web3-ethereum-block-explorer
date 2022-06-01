@@ -29,17 +29,22 @@ h4 {
   align-items: center;
 }
 
-button {
+button, .button-like {
   border: none;
   padding: 10px;
   background-color: orange;
   border-radius: 5px;
   box-shadow: 0 3px 3px -3px;
   cursor: pointer;
+  color:black;
+  text-align: center;
 }
 
-button:hover{
+button:hover, .button-like:hover{
   background-color: darkorange;
+  color:black;
+  text-decoration: none;
+  text-align: center;
 }
 
 a{
@@ -51,4 +56,22 @@ a{
 a:hover{
   color: darkorange;
   text-decoration: underline;
+}
+
+.success{
+  color:green;
+  font-weight: 500;
+}
+
+.error{
+  color:red;
+  font-weight: 500;
+}
+
+.processing{
+  color:darkgray;
+}
+
+.small-text{
+  font-size: 12px;
 }

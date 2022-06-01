@@ -34,19 +34,27 @@ export const getAddressInfo = async (addressNb: string) => {
       return { success: false, error: 'Invalid Address' };
     }
 
+    console.log('is an address');
+
     //Get the balance
     const balance = await provider.getBalance(addressHash);
+    console.log('balance', balance);
 
     //Get the nonce
     const nonce = await provider.getTransactionCount(addressHash);
+    console.log('nonce', nonce);
 
-    //Get the history
-    const history = await etherscanProvider.getHistory(addressHash);
+    const code = await provider.getCode(addressHash);
 
-    //Get the price for 1 ETH
-    const price = await provider.getEtherPrice();
-
-    return { success: true, data: { addressHash, balance, nonce, history, price } };
+    return {
+      success: true,
+      data: {
+        addressHash,
+        balance: utils.formatEther(balance),
+        nonce,
+        isContract: code !== '0x0',
+      },
+    };
   } catch (error: any) {
     return { success: false, error: error.message };
   }
@@ -55,6 +63,16 @@ export const getAddressInfo = async (addressNb: string) => {
 export const getTransactionReceipt = async (tXHash: string) => {
   try {
     const tx = await provider.getTransactionReceipt(tXHash);
+    return tx;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+export const getTransaction = async (tXHash: string) => {
+  try {
+    const tx = await provider.getTransaction(tXHash);
     return tx;
   } catch (error) {
     console.log(error);

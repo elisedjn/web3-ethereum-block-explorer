@@ -19,7 +19,12 @@ const OneFullBlock = ({ block }: { block: Block }) => {
         </div>
         <div className='block-info'>
           <div>{block.number}</div>
-          <Moment parse='YYYY-MM-DD HH:mm'>{date}</Moment>
+          <div>
+            <Moment format='MMM-DD-YYYY HH:mm:ss'>{date}</Moment>{' '}
+            <span className='processing small-text'>
+              <Moment durationFromNow>{date}</Moment> ago
+            </span>
+          </div>
           <div>
             {block.transactions.length} transactions{' '}
             <Link to={`/txsPerBlock/${block.number}`}>See details</Link>
